@@ -1,14 +1,10 @@
-# deep-space-store
+# Deep Space Store
 
-This template should help get you started developing with Vue 3 in Vite.
+Small project with Vue 3 and Vite, using Vue Single-File Components (SFCs).
 
-## Recommended IDE Setup
+# Problemas e desafios
+Encontrado um problema de compatibilidade entre a MWS e a versão do node v20.10.0 e npm 10.2.5, que a função de formatData não realiza a serialização do dados que vem do body, sendo optado buscar uma solução atraves de outras lib para mock a Mirage Js, que realiza as mesmas função, entranto gera empercilhos, para requisição externas, gerando coonflito com a Axios, mas resolvido utilizando a Fatch API. 
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
@@ -28,27 +24,6 @@ npm run dev
 npm run build
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
-
-```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
 
 ### Lint with [ESLint](https://eslint.org/)
 
