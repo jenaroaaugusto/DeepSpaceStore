@@ -25,16 +25,24 @@
             Buscar
           </v-btn>
 
-          <v-btn block disabled class="text-none" color="grey-lighten-3" size="x-large" variant="flat" @click="createOffert()">
+          <v-btn block disabled  class="text-none" color="grey-lighten-3" size="x-large" variant="flat" @click="createOffert()">
             Criar
           </v-btn>
         </v-card-text>
       </v-card>
     </v-dialog>
-    <v-container v-if="shoppingCart" fluid>
-      <v-row dense>
-        <ProductCard cols="3" v-for="product in products" :key="product.id" :product="product" />
+    <v-container min-height="400px" v-if="shoppingCart" fluid>
+      <v-skeleton-loader
+          v-if="loading"
+          max-height="200px"
+          elevation="12"
+          max-width="200px"
+          type="table-heading, list-item-two-line, image, table-tfoot"
+          >
+      <v-row v-if="!loading" dense>
+        <ProductCard  cols="3" v-for="product in products" :key="product.id" :product="product" />
       </v-row>
+    </v-skeleton-loader>
     </v-container>
   </div>
 </template>
@@ -58,6 +66,7 @@ const store = useStore();
 const OFFER_CODE = ref('')
 const router = useRouter()
 const route = useRoute()
+const loading = ref(false)
 
 const shoppingCart = ref(false)
 
@@ -88,45 +97,18 @@ function getOffert(params) {
 
 
 function createOffert() {
+  loading.value = true
   shoppingCart.value = true
   store.dispatch('fetchShopList').then((result) => {
-    const products = store.getters.getOffersAvailable
+    // const products = store.getters.getOffersAvailable
+    const products = result.data.list
+
     console.log(products)
-
-    // router.push({
-    //   name: 'payment',
-    //   OFFER_CODE: result.data.OFFER_CODE,
-    //   query: {
-    //     OFFER_CODE: result.data.OFFER_CODE,
-    //     ...route.query
-    //   }
-
-    // })
 
   });
 
 }
 
-// const products = [
-//     {
-//         id: 1,
-//         name: 'TV 32 Samsung T4300',
-//         price: 1087,
-//         image: tvImage
-//     },
-//     {
-//         id: 2,
-//         name: 'Smartphone Samsung Galaxy A32',
-//         price: 1399.00,
-//         image: smartphoneImage
-//     },
-//     {
-//         id: 3,
-//         name: 'Notebook Acer Aspire 3',
-//         price: 2799.00,
-//         image: notebookImage
-//     }
-// ]
 
 </script>
 
