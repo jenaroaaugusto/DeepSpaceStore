@@ -196,7 +196,9 @@
         });
     }
     
-
+    function sumTeste(a,b){
+        return a+b
+    }
 
     watch(phoneValue, (newValue, oldValue) => {
         if (newValue.length > 10) {
@@ -219,7 +221,6 @@
 
 
         store.dispatch('createOrder', paymentInformation).then((result) => {
-            console.log(result)
             
             router.push({
                 name: 'success',
@@ -229,7 +230,7 @@
                     ...route.query
                 }
 
-        })
+            })
         })
     }
     

@@ -14,10 +14,12 @@ class Service {
         });
     }
     
-    static makeOffer() {
+    static fetchShopList() {
         return new Promise((resolve, reject) => {
-            axios.get('/resource')
+            axios.get('/all-offerts')
                 .then((response) => {
+                    console.log(response.data);
+                    store.commit('setOffersAvailable', response.data);
                     resolve(response);
                 })
                 .catch((error) => {
@@ -40,10 +42,7 @@ class Service {
     }
 
     static createOrder(payload) {
-        console.log('Service.createOrder');
-        console.log(payload);
         const OFFER_CODE = payload.offerCode;
-        console.log(OFFER_CODE);
         return new Promise((resolve, reject) => {
             axios.post(`/offers/${OFFER_CODE}/create_order`, payload)
                 .then((response) => {
@@ -51,8 +50,6 @@ class Service {
                     resolve(response);
                 })
                 .catch((error) => {
-                    console.log('Service.createOrder error');
-                    console.log(error);
                     store.commit('setOperationStatus', 'error');
                     reject(error);
                 });

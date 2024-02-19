@@ -51,7 +51,7 @@ import notebookImage from '@/assets/acerAs3.jpeg';
 
 import { useStore } from 'vuex';
 import { useRouter, useRoute } from 'vue-router'
-import { ref } from 'vue';
+import { ref, onMounted} from 'vue';
 
 const store = useStore();
 
@@ -62,6 +62,11 @@ const route = useRoute()
 const shoppingCart = ref(false)
 
 const dialog = ref(false)
+
+onMounted(() => {
+  store.commit('resetStates')
+})
+
 
 function getOffert(params) {
   store.dispatch('fetchOffert', params).then((result) => {
@@ -82,7 +87,8 @@ function getOffert(params) {
 
 function createOffert() {
   shoppingCart.value = true
-  store.dispatch('createOffert').then((result) => {
+  store.dispatch('fetchShopList').then((result) => {
+    console.log(result)
     // router.push({
     //   name: 'payment',
     //   OFFER_CODE: result.data.OFFER_CODE,

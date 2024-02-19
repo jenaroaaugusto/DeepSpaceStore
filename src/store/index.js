@@ -12,7 +12,8 @@ export default createStore({
     offerCode: '',
     modelOpen: false,
     operationStatus: '',
-    order : {}
+    order : {},
+    offersAvailable: {}
 
   },
   mutations: {
@@ -45,6 +46,9 @@ export default createStore({
     },
     setOrderSuccess(state, payload) {
       state.order = payload;
+    },
+    setOffersAvailable(state, payload) {
+      state.offersAvailable = payload;
     }
 
 
@@ -64,7 +68,7 @@ export default createStore({
     },
     fetchShopList() {
       return new Promise((resolve, reject) => {
-        Service.makeOffer()
+        Service.fetchShopList()
           .then((response) => {
             resolve(response);
           })
@@ -77,6 +81,7 @@ export default createStore({
       return new Promise((resolve, reject) => {
         Service.getOfferForID(payload)
           .then((response) => {
+
             resolve(response);
           })
           .catch((error) => {
@@ -85,10 +90,19 @@ export default createStore({
       });
     },
     createOrder(context, payload) {
-      console.log('createOrder');
-      console.log(payload);
       return new Promise((resolve, reject) => {
         Service.createOrder(payload)
+          .then((response) => {
+            resolve(response);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    },
+    createOffert(context, payload) {
+      return new Promise((resolve, reject) => {
+        Service.createOffert(payload)
           .then((response) => {
             resolve(response);
           })

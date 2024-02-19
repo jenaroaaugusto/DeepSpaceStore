@@ -36,7 +36,6 @@ export const handlers = [
       const offerId = params.offerId;
       const clonedRequest = request.clone();
       const formData = await clonedRequest.formData();
-      console.log(formData)
 
       // Valida se o ID da oferta é um número
       if (!/^\d+$/.test(offerId)) {
@@ -46,15 +45,13 @@ export const handlers = [
         })
       } 
 
-      // const cpf = params.cpf;
-      // console.log(cpf)
-      // console.log(params)
-      // if(!/^0{11}$/.test(cpf)){
-      //   return new HttpResponse(null, {
-      //     status: 400,
-      //     statusText: 'Invalid CPF',
-      //   })
-      // }
+      const cpf = params.cpf;
+      if(!/^0{11}$/.test(cpf)){
+        return new HttpResponse(null, {
+          status: 400,
+          statusText: 'Invalid CPF',
+        })
+      }
 
 
       

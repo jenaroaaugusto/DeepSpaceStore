@@ -24,7 +24,7 @@
 <script setup>
 import { computed,  ref } from "vue";
 import { useStore } from "vuex";
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import ShopModal from './shopModal.vue';
 
 const store = useStore();
@@ -56,18 +56,3 @@ const productsNumber = computed(() => store.getters.returnShopNumber);
   color: white;
 }
 </style>
-<!-- 
-    <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView /> -->
