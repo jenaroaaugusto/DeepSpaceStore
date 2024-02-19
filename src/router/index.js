@@ -24,9 +24,8 @@ const router = createRouter({
         }
       },
       beforeRouteLeave(to, from, next) {
-        // Verifica se a página atual foi recarregada
         if (from.name === to.name) {
-          // Exibe um modal de confirmação
+
           const confirmed = this.$swal({
             title: 'Confirmação',
             text: 'Deseja realmente sair da página?',
@@ -34,7 +33,6 @@ const router = createRouter({
             showCancelButton: true,
           });
     
-          // Se o usuário confirmar, redireciona para outra página
           if (confirmed) {
             next('/');
           } else {

@@ -1,7 +1,5 @@
 <template>
     <v-container>
-        
-
         <v-row>
             <v-col cols="3">
                 <productlist />
@@ -174,13 +172,6 @@
     })
 
     const productList = store.getters.getOfferList
-    // function getZipCode(cep) {
-    //    store.dispatch('getZipCode',cep ).then((result) => {
-    //         address.value = result.data.logradouro
-    //         Neighborhoods.value = result.data.bairro
-    //         City.value =result.data.localidade +' - '+ result.data.uf
-    //     })        
-    // }
 
     function getZipCode(cep) {
         

@@ -1,6 +1,6 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import dropShopp from './components/shareds/header.vue'
+import { RouterView } from 'vue-router'
+import dropShopp from './components/shareds/ToolbarPage.vue'
 </script>
 
 <template>

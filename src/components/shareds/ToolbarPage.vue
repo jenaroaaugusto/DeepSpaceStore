@@ -19,14 +19,6 @@
     </v-app-bar>
 
     <ShopModal v-model:dialog="open" />
-    
-    <!-- <v-footer class="footer-config">
-      <v-row justify="center" no-gutters>
-      <v-col class="text-center mt-4" cols="12">
-        {{ new Date().getFullYear() }} — <strong>Jenaro Augusto</strong>
-      </v-col>
-    </v-row>
-  </v-footer> -->
 </template>
 
 <script setup>

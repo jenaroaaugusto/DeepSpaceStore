@@ -2,13 +2,6 @@ import { http, HttpResponse } from 'msw'
 // import { rest } from 'msw';
  
 export const handlers = [
-  http.get('/resource', (req, res, ctx) => {
-
-
-    // 2. Return a mocked "Response" instance from the handler.
-    return HttpResponse.text('Hello world!')
-  }),
-
   http.get('/offerts',({request}  ) => {
 
     const url = new URL(request.url)
@@ -38,7 +31,7 @@ export const handlers = [
         ]
       })}),
       
-    http.post('/offers/:offerId/create_order',  async({ request, params }, req) => {
+    http.post('/offers/:offerId/create_order',  async({ request, params }) => {
       // Extrai o ID da oferta da URL
       const offerId = params.offerId;
       const clonedRequest = request.clone();
