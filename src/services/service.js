@@ -19,7 +19,7 @@ class Service {
             axios.get('/all-offerts')
                 .then((response) => {
                     console.log(response.data);
-                    store.commit('setOffersAvailable', response.data);
+                    store.commit('setOffersAvailable', response.data.list);
                     resolve(response);
                 })
                 .catch((error) => {

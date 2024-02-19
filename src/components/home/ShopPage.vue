@@ -25,7 +25,7 @@
             Buscar
           </v-btn>
 
-          <v-btn block class="text-none" color="grey-lighten-3" size="x-large" variant="flat" @click="createOffert()">
+          <v-btn block disabled class="text-none" color="grey-lighten-3" size="x-large" variant="flat" @click="createOffert()">
             Criar
           </v-btn>
         </v-card-text>
@@ -61,7 +61,9 @@ const route = useRoute()
 
 const shoppingCart = ref(false)
 
+
 const dialog = ref(false)
+
 
 onMounted(() => {
   store.commit('resetStates')
@@ -88,7 +90,9 @@ function getOffert(params) {
 function createOffert() {
   shoppingCart.value = true
   store.dispatch('fetchShopList').then((result) => {
-    console.log(result)
+    const products = store.getters.getOffersAvailable
+    console.log(products)
+
     // router.push({
     //   name: 'payment',
     //   OFFER_CODE: result.data.OFFER_CODE,
@@ -103,26 +107,26 @@ function createOffert() {
 
 }
 
-const products = [
-    {
-        id: 1,
-        name: 'TV 32 Samsung T4300',
-        price: 1087,
-        image: tvImage
-    },
-    {
-        id: 2,
-        name: 'Smartphone Samsung Galaxy A32',
-        price: 1399.00,
-        image: smartphoneImage
-    },
-    {
-        id: 3,
-        name: 'Notebook Acer Aspire 3',
-        price: 2799.00,
-        image: notebookImage
-    }
-]
+// const products = [
+//     {
+//         id: 1,
+//         name: 'TV 32 Samsung T4300',
+//         price: 1087,
+//         image: tvImage
+//     },
+//     {
+//         id: 2,
+//         name: 'Smartphone Samsung Galaxy A32',
+//         price: 1399.00,
+//         image: smartphoneImage
+//     },
+//     {
+//         id: 3,
+//         name: 'Notebook Acer Aspire 3',
+//         price: 2799.00,
+//         image: notebookImage
+//     }
+// ]
 
 </script>
 

@@ -13,7 +13,7 @@ export default createStore({
     modelOpen: false,
     operationStatus: '',
     order : {},
-    offersAvailable: {}
+    offersAvailable: []
 
   },
   mutations: {
@@ -48,6 +48,8 @@ export default createStore({
       state.order = payload;
     },
     setOffersAvailable(state, payload) {
+      console.log("setOffersAvailable")
+      console.log(payload);
       state.offersAvailable = payload;
     }
 
@@ -143,6 +145,10 @@ export default createStore({
         fullPrice += product.price;
       });
       return fullPrice;
+    },
+
+    getOffersAvailable(state) {
+      return state.offersAvailable;
     },
 
     getOrderSuccess(state) {
