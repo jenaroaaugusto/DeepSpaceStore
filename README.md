@@ -1,6 +1,6 @@
 # deep-space-store
 
-This template should help get you started developing with Vue 3 in Vite.
+Small project with Vue 3 and Vite, using Vue Single-File Components (SFCs).
 
 ## Recommended IDE Setup
 
